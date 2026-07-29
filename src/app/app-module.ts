@@ -10,6 +10,8 @@ import { Clientes } from './clientes/clientes';
 import { ClienteService } from './clientes/cliente.service';
 import { RouterModule ,Routes } from '@angular/router';
 
+import {HttpClientModule} from '@angular/common/http'
+
 const routes:Routes = [
   {path: '', redirectTo:'', pathMatch: 'full'},
   {path: 'directivas', component: Directiva},
@@ -20,7 +22,13 @@ const routes:Routes = [
 
 @NgModule({
   declarations: [App, Clientes],
-  imports: [BrowserModule, AppRoutingModule, HeaderComponent, FooterComponent, Directiva, RouterModule.forRoot(routes)],
+  imports: [BrowserModule,
+    HttpClientModule, 
+    AppRoutingModule,
+     HeaderComponent,
+      FooterComponent,
+       Directiva,
+        RouterModule.forRoot(routes)],
   providers: [provideBrowserGlobalErrorListeners(), ClienteService],
   bootstrap: [App],
 })
