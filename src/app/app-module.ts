@@ -1,5 +1,8 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
@@ -8,12 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { Directiva } from './directiva/directiva';
 import { Clientes } from './clientes/clientes';
 import { ClienteService } from './clientes/cliente.service';
-import { RouterModule, Routes } from '@angular/router';
-
-import { HttpClientModule } from '@angular/common/http';
-import { Form } from './clientes/form';
-import { FormsModule } from '@angular/forms';
-
+import { FormComponent } from './clientes/form'; // Corregido: FormComponent en lugar de Form
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
@@ -22,7 +20,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [App, Clientes, Form],
+  declarations: [
+    App, 
+    Clientes
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -31,6 +32,7 @@ const routes: Routes = [
     FooterComponent,
     FormsModule,
     Directiva,  
+    FormComponent, // <--- Movido aquí
     RouterModule.forRoot(routes),
   ],
   providers: [provideBrowserGlobalErrorListeners(), ClienteService],
