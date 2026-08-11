@@ -8,27 +8,31 @@ import { FooterComponent } from './footer/footer.component';
 import { Directiva } from './directiva/directiva';
 import { Clientes } from './clientes/clientes';
 import { ClienteService } from './clientes/cliente.service';
-import { RouterModule ,Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { Form } from './clientes/form';
+import { FormsModule } from '@angular/forms';
 
-const routes:Routes = [
-  {path: '', redirectTo:'', pathMatch: 'full'},
-  {path: 'directivas', component: Directiva},
-  {path: 'clientes', component: Clientes},
 
-]
-
+const routes: Routes = [
+  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: 'directivas', component: Directiva },
+  { path: 'clientes', component: Clientes },
+];
 
 @NgModule({
-  declarations: [App, Clientes],
-  imports: [BrowserModule,
-    HttpClientModule, 
+  declarations: [App, Clientes, Form],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
-     HeaderComponent,
-      FooterComponent,
-       Directiva,
-        RouterModule.forRoot(routes)],
+    HeaderComponent,
+    FooterComponent,
+    FormsModule,
+    Directiva,  
+    RouterModule.forRoot(routes),
+  ],
   providers: [provideBrowserGlobalErrorListeners(), ClienteService],
   bootstrap: [App],
 })

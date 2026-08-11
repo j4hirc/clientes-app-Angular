@@ -16,10 +16,14 @@ export class Clientes implements OnInit {
   constructor(private clienteService: ClienteService) {} 
 
   ngOnInit(): void {
-
-    this.clienteService.getClientes().subscribe(
-      clientes => this.clientes = clientes
-    );
-    
+    this.clienteService.getClientes().subscribe({
+      next: (datos) => {
+        console.log('¡LLEGARON LOS DATOS DEL BACKEND!', datos);
+        this.clientes = datos;
+      },
+      error: (err) => {
+        console.error('ALGO EXPLOTÓ EN LA CONEXIÓN:', err);
+      }
+    });
   }
 }
