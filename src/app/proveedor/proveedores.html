@@ -24,7 +24,6 @@
               <p class="card-text">{{proveedor.descripcion}}</p>
             </div>
             
-            <!-- Botones de Editar y Eliminar dentro de la tarjeta -->
             <div class="card-footer bg-transparent text-center d-flex gap-2">
               <button class="btn btn-outline-info w-50" [routerLink]="['/proveedores/form', proveedor.id]">Editar</button>
               <button class="btn btn-outline-danger w-50" (click)="delete(proveedor)">Eliminar</button>

@@ -20,7 +20,7 @@ export class FormProveedorComponent implements OnInit {
   constructor(
     private proveedorService: ProveedorService, 
     private router: Router,
-    private activatedRoute: ActivatedRoute, // 2. Inyectar ActivatedRoute
+    private activatedRoute: ActivatedRoute, 
     private cdr: ChangeDetectorRef
   ) { }
 
