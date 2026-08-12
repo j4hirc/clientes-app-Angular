@@ -1,0 +1,42 @@
+<div class="card border-primary mb-3">
+  <div class="card-header text-primary">
+    <h5 class="mb-0">Gestión de Proveedores</h5>
+  </div>
+  <div class="card-body">
+    
+    <div class="mb-4 text-left">
+      <button class="btn btn-primary" routerLink="/proveedores/form">Crear Proveedor</button>
+    </div>
+
+    <div class="row">
+      @for (proveedor of proveedores; track $index) {
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm border-dark">
+            
+            @if (proveedor.foto_url) {
+              <img [src]="'http://localhost:8080/uploads/' + proveedor.foto_url" class="card-img-top" style="height: 250px; object-fit: cover;" alt="Foto proveedor">
+            } @else {
+              <img src="https://via.placeholder.com/250?text=Sin+Foto" class="card-img-top" style="height: 250px; object-fit: cover;">
+            }
+            
+            <div class="card-body">
+              <h5 class="card-title">{{proveedor.nombre}}</h5>
+              <p class="card-text">{{proveedor.descripcion}}</p>
+            </div>
+            
+            <!-- Botones de Editar y Eliminar dentro de la tarjeta -->
+            <div class="card-footer bg-transparent text-center d-flex gap-2">
+              <button class="btn btn-outline-info w-50" [routerLink]="['/proveedores/form', proveedor.id]">Editar</button>
+              <button class="btn btn-outline-danger w-50" (click)="delete(proveedor)">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      } @empty {
+        <div class="col-12 text-center alert alert-info">
+          No hay proveedores registrados o están cargando...
+        </div>
+      }
+    </div>
+
+  </div>
+</div>

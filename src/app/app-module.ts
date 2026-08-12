@@ -11,20 +11,26 @@ import { FooterComponent } from './footer/footer.component';
 import { Directiva } from './directiva/directiva';
 import { Clientes } from './clientes/clientes';
 import { ClienteService } from './clientes/cliente.service';
-import { FormComponent } from './clientes/form'; // Corregido: FormComponent en lugar de Form
+import { FormComponent } from './clientes/form'; 
+import { Proveedores } from './proveedor/proveedores';
+import { FormProveedorComponent } from './proveedor/form-proveedor';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: 'directivas', component: Directiva },
   { path: 'clientes', component: Clientes },
   { path: 'clientes/form', component: FormComponent } ,
-  { path: 'clientes/form/:id', component: FormComponent }
+  { path: 'clientes/form/:id', component: FormComponent },
+  { path: 'proveedores', component: Proveedores },
+  { path: 'proveedores/form', component: FormProveedorComponent },
+  { path: 'proveedores/form/:id', component: FormProveedorComponent }
 ];
 
 @NgModule({
   declarations: [
     App, 
-    Clientes
+    Clientes,
+    Proveedores
   ],
   imports: [
     BrowserModule,
@@ -35,6 +41,7 @@ const routes: Routes = [
     FormsModule,
     Directiva,  
     FormComponent, 
+    FormProveedorComponent,
     RouterModule.forRoot(routes),
   ],
   providers: [provideBrowserGlobalErrorListeners(), ClienteService, provideHttpClient()],

@@ -1,0 +1,37 @@
+<div class="card bg-dark text-white mb-3">
+  <div class="card-header">{{titulo}}</div>
+  <div class="card-body">
+    <form ngNativeValidate> 
+      <div class="form-group row mb-3">
+        <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="proveedor.nombre" name="nombre" required> 
+        </div>
+      </div>
+
+      <div class="form-group row mb-3">
+        <label for="descripcion" class="col-sm-2 col-form-label">Descripción</label>
+        <div class="col-sm-6">
+          <textarea class="form-control" [(ngModel)]="proveedor.descripcion" name="descripcion" required></textarea>
+        </div>
+      </div>
+
+      <div class="form-group row mb-3">
+        <label for="foto" class="col-sm-2 col-form-label">Foto</label>
+        <div class="col-sm-6">
+          <input type="file" class="form-control" (change)="seleccionarFoto($event)" accept="image/*">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+          @if (proveedor.id) {
+            <button class="btn btn-primary" type="button" (click)="update()">Actualizar</button>
+          } @else {
+            <button class="btn btn-primary" type="button" (click)="create()">Guardar Proveedor</button>
+          }
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
