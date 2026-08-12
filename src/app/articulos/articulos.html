@@ -1,0 +1,51 @@
+<div class="card border-primary mb-3">
+  <div class="card-header text-primary">
+    <h5 class="mb-0">Listado de Artículos</h5>
+  </div>
+  <div class="card-body">
+    
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <button class="btn btn-primary" routerLink="/articulos/form">Crear Artículo</button>
+      </div>
+      <div class="col-md-6">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Buscar por código, nombre o categoría..." 
+                 [(ngModel)]="terminoBusqueda" (keyup.enter)="onBuscar()">
+          <button class="btn btn-outline-secondary" type="button" (click)="onBuscar()">Buscar</button>
+        </div>
+      </div>
+    </div>
+
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>código</th>
+          <th>nombre</th>
+          <th>categoría</th>
+          <th>opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (articulo of articulos; track $index) {
+          <tr>
+            <td>{{articulo.id}}</td>
+            <td>{{articulo.codigo}}</td>
+            <td>{{articulo.nombre}}</td>
+            <td>{{articulo.categoria}}</td>
+            <td>
+              <button class="btn btn-info btn-sm me-2" [routerLink]="['/articulos/form', articulo.id]">Editar</button>
+              <button class="btn btn-danger btn-sm" (click)="delete(articulo)">Eliminar</button>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="5" class="text-center">No hay artículos registrados o no se encontraron coincidencias.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+  </div>
+</div>

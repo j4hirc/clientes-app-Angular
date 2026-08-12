@@ -14,6 +14,8 @@ import { ClienteService } from './clientes/cliente.service';
 import { FormComponent } from './clientes/form'; 
 import { Proveedores } from './proveedor/proveedores';
 import { FormProveedorComponent } from './proveedor/form-proveedor';
+import { Articulos } from './articulos/articulos';
+import { FormArticuloComponent } from './articulos/form-articulo';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
@@ -23,14 +25,18 @@ const routes: Routes = [
   { path: 'clientes/form/:id', component: FormComponent },
   { path: 'proveedores', component: Proveedores },
   { path: 'proveedores/form', component: FormProveedorComponent },
-  { path: 'proveedores/form/:id', component: FormProveedorComponent }
+  { path: 'proveedores/form/:id', component: FormProveedorComponent },
+  { path: 'articulos', component: Articulos }, // <--- NUEVA
+  { path: 'articulos/form', component: FormArticuloComponent }, 
+  { path: 'articulos/form/:id', component: FormArticuloComponent }
 ];
 
 @NgModule({
   declarations: [
     App, 
     Clientes,
-    Proveedores
+    Proveedores,
+    Articulos
   ],
   imports: [
     BrowserModule,
@@ -42,6 +48,7 @@ const routes: Routes = [
     Directiva,  
     FormComponent, 
     FormProveedorComponent,
+    FormArticuloComponent,
     RouterModule.forRoot(routes),
   ],
   providers: [provideBrowserGlobalErrorListeners(), ClienteService, provideHttpClient()],
