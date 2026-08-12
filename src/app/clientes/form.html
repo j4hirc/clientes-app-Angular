@@ -2,7 +2,7 @@
   <div class="card-header">{{titulo}}</div>
   <div class="card-body">
 
-    <form ngNativeValidate (ngSubmit)="create()"> 
+    <form ngNativeValidate> 
       <div class="form-group row">
         <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
         <div class="col-sm-6">
@@ -26,7 +26,11 @@
 
       <div class="form-group row">
         <div class="col-sm-6">
-          <button class="btn btn-primary" role="button">Crear</button>
+          @if (cliente.id) {
+            <button class="btn btn-primary" type="button" (click)="update()" role="button">Editar</button>
+          } @else {
+            <button class="btn btn-primary" type="button" (click)="create()" role="button">Crear</button>
+          }
         </div>
       </div>
     </form>

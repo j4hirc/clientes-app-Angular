@@ -1,6 +1,6 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: 'directivas', component: Directiva },
   { path: 'clientes', component: Clientes },
-  { path: 'clientes/form', component: FormComponent } 
+  { path: 'clientes/form', component: FormComponent } ,
+  { path: 'clientes/form/:id', component: FormComponent }
 ];
 
 @NgModule({
@@ -33,10 +34,10 @@ const routes: Routes = [
     FooterComponent,
     FormsModule,
     Directiva,  
-    FormComponent, // <--- Movido aquí
+    FormComponent, 
     RouterModule.forRoot(routes),
   ],
-  providers: [provideBrowserGlobalErrorListeners(), ClienteService],
+  providers: [provideBrowserGlobalErrorListeners(), ClienteService, provideHttpClient()],
   bootstrap: [App],
 })
 export class AppModule {}
