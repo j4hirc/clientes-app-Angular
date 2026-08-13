@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cliente } from './cliente';
 import { map, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment'; // Ajusta la ruta
+import { environment } from '../../environments/environment'; 
 
 @Injectable ({
     providedIn: 'root'
