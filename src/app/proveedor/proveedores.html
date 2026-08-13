@@ -13,8 +13,9 @@
         <div class="col-md-4 mb-4">
           <div class="card h-100 shadow-sm border-dark">
             
+            <!-- CORREGIDO: Usamos directamente la URL pública que viene de Supabase -->
             @if (proveedor.foto_url) {
-              <img [src]="'http://localhost:8080/uploads/' + proveedor.foto_url" class="card-img-top" style="height: 250px; object-fit: cover;" alt="Foto proveedor">
+              <img [src]="proveedor.foto_url" class="card-img-top" style="height: 250px; object-fit: cover;" alt="Foto proveedor">
             } @else {
               <img src="https://via.placeholder.com/250?text=Sin+Foto" class="card-img-top" style="height: 250px; object-fit: cover;">
             }

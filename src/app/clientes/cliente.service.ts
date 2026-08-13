@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import { CLIENTES } from './clientes.json';
 import { Cliente } from './cliente';
 import { map, Observable, of } from 'rxjs';
-import {HttpClient} from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment'; // Ajusta la ruta
 
 @Injectable ({
     providedIn: 'root'
 })
 export class ClienteService {
 
-
-    private urlEndPoint:string = 'http://localhost:8080/api/clientes';
+    private urlEndPoint: string = `${environment.apiUrl}/api/clientes`;
     private httpHeaders = {'Content-Type': 'application/json'};
     
     constructor(private http: HttpClient ) {}
@@ -30,13 +29,10 @@ export class ClienteService {
     }
 
     update(cliente: Cliente): Observable<Cliente>{
-    return this.http.put<Cliente>(`${this.urlEndPoint}/${cliente.id}`, cliente, {headers: this.httpHeaders});
-  }
+        return this.http.put<Cliente>(`${this.urlEndPoint}/${cliente.id}`, cliente, {headers: this.httpHeaders});
+    }
 
-  delete(id: number): Observable<Cliente>{
-    return this.http.delete<Cliente>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeaders});
-  }
-
-
-
+    delete(id: number): Observable<Cliente>{
+        return this.http.delete<Cliente>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeaders});
+    }
 }
