@@ -10,6 +10,6 @@ export const environment = {
   apiUrl: '${apiUrl}'
 };
 `;
-//xdd
+
 fs.writeFileSync(targetPath, envConfigFile);
 console.log(`¡Variable de entorno inyectada con éxito! API_URL: ${apiUrl}`);
