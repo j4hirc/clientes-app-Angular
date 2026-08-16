@@ -52,7 +52,6 @@ export class FormArticuloComponent implements OnInit {
             if (this.articulo.proveedor) {
               this.articulo.proveedorId = this.articulo.proveedor.id;
             }
-            // -----------------------------
 
             this.cdr.detectChanges();
           }
