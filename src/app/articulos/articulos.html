@@ -24,6 +24,7 @@
           <th>código</th>
           <th>nombre</th>
           <th>categoría</th>
+          <th>proveedor</th>
           <th>opciones</th>
         </tr>
       </thead>
@@ -34,6 +35,7 @@
             <td>{{articulo.codigo}}</td>
             <td>{{articulo.nombre}}</td>
             <td>{{articulo.categoria}}</td>
+            <td>{{articulo.proveedor?.nombre || 'Sin proveedor asignado'}}</td>
             <td>
               <button class="btn btn-info btn-sm me-2" [routerLink]="['/articulos/form', articulo.id]">Editar</button>
               <button class="btn btn-danger btn-sm" (click)="delete(articulo)">Eliminar</button>

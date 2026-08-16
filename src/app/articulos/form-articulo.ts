@@ -4,6 +4,8 @@ import { Articulo } from './articulo';
 import { ArticuloService } from './articulo.service';
 import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
+import { Proveedor } from '../proveedor/proveedor';
+import { ProveedorService } from '../proveedor/proveedor.service';
 
 @Component({
   selector: 'app-form-articulo',
@@ -15,16 +17,27 @@ export class FormArticuloComponent implements OnInit {
 
   public articulo: Articulo = new Articulo();
   public titulo: string = "Crear Artículo";
+  public proveedores: Proveedor[] = [];
 
   constructor(
     private articuloService: ArticuloService,
     private router: Router,
+    private proveedorService: ProveedorService,
     private activatedRoute: ActivatedRoute,
     private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
     this.cargarArticulo();
+    this.cargarProveedores();
+  }
+
+  cargarProveedores(): void {
+    this.proveedorService.getProveedores().subscribe(
+      (proveedores) => {
+        this.proveedores = proveedores;
+      }
+    );
   }
 
   cargarArticulo(): void {
@@ -35,6 +48,12 @@ export class FormArticuloComponent implements OnInit {
         this.articuloService.getArticulo(id).subscribe(
           (articulo) => {
             this.articulo = articulo;
+            
+            if (this.articulo.proveedor) {
+              this.articulo.proveedorId = this.articulo.proveedor.id;
+            }
+            // -----------------------------
+
             this.cdr.detectChanges();
           }
         );
